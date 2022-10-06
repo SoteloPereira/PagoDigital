@@ -1,0 +1,391 @@
+:root {
+    --primario: #6834a6;
+    --blanco: #FFF;
+    --negro: #000000;
+    --fuentePrincipal: 'Poppins', sans-serif;
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: var(--fuentePrincipal);
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+h1, h2, h3 {
+    font-weight: 900;
+    margin: 2rem 0;
+}
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 4.6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+/* todos los elementos que TERMINEN con __contenedor tendras este estilo*/
+[class$="__contenedor"]{
+    max-width: 120rem;
+    margin: 0 auto 4rem;
+    width: 90%;
+}
+/* hacemos lo mismo con los titulos/headings, reutilizando los atributos que se repiten */
+[class$="__titulo"]{
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+/** HEADER **/ 
+.header{
+    background-image: url(../img/header_bg.svg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    padding: 5rem 0 0;
+    background-size: 15rem;
+}
+@media (min-width: 768px) { 
+     .header{
+        background-size: 50rem
+     }
+}
+@media (min-width: 992px) { 
+    .header{
+        background-size: 60rem
+     }
+}
+@media (min-width: 1220px) { 
+    .header{
+        background-size: 100rem
+     }
+}
+.header__contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 90%;
+}
+@media (min-width: 768px) { 
+     .header__barra{
+        display:flex;
+        justify-content: space-between;
+     }
+}
+.header__logo{
+    width: 15rem;
+    margin: 0 auto 3rem auto;
+}
+@media (min-width: 768px) { 
+    .header__logo{
+        margin:0;
+    }
+}
+/* alinear links de arriba abajo y centrado*/
+.navegacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (min-width: 768px) { 
+     .navegacion{
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+     }
+}
+.navegacion__link{
+
+}
+@media (min-width: 768px) { 
+     .navegacion__link{
+        color: var(--blanco);
+        font-weight: 500;
+     }
+}
+
+.header__titulo{
+    font-size: 3rem;
+    /* line-height: 1.5; */
+}
+@media (min-width: 768px) { 
+    .header__titulo{
+        font-size: 5rem;
+        text-align: left;
+        line-height: 1.2;
+    }
+}
+/* ajustar tamaño de imagen app*/
+@media (min-width: 768px ) { 
+     .header__imagen{
+        max-width: 30rem;
+        margin: 0 auto;
+     }
+}
+.header__boton{
+    all:unset;
+    background-color: var(--primario);
+    padding: 1rem;
+    display: block;
+    color: var(--blanco);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 4rem;
+    cursor: pointer;
+}
+@media (min-width: 768px) { 
+     .header__boton{
+        display: inline-block;
+        padding: 1rem 2rem;
+     }
+}
+@media (min-width: 768px) { 
+     .header__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        align-items: center; /* para alinear verticalmente lo que esta en las celdas del grid*/
+     }
+}
+
+
+/** MAIN - Nucleus **/
+.queEs{
+    margin-top: 3rem;
+}
+.queEs__encabezado{
+    text-align: center;
+    margin-bottom: 5rem;
+}
+/* vamos a utilizar un selector de atributos - linea 40 */
+.queEs_contenedor{
+    /* por tanto no es necesario definir ni este contenedor ni el header */
+}
+.queEs__grid{
+    display: flex;
+    flex-direction: column-reverse;
+}
+@media (min-width: 768px) { 
+    .queEs__grid{
+        display: grid;
+        /* porque la columna2 (con texto es mas grande)*/
+        grid-template-columns: 1fr 2fr;
+        column-gap: 5rem;
+        align-items: center;
+    }
+   
+}
+.informacion__texto{
+    /* border: 1px solid #8a8a8a; */
+    /* el primero es horizontal - hasta donde se va a extender
+    segundo es en vertical 
+    tercero es el blur (difuminado) cuanto se extiende la sombra
+    cuarto spread - dureza de la sombra, cuan oscuro
+    quinto el color de la sombra - en rgb, hex, nombre, etc 
+    */
+    box-shadow: 0px 0px 15px 3px rgb(0 0 0 / .15);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    transition: transform .5s ease;
+    background-color: var(--blanco);
+}
+.informacion__titulo{
+    color: var(--primario);
+    margin: 0;
+}
+.informacion__descripcion{
+    margin: 0;
+    font-size: 1.7rem;
+}
+.informacion__texto:hover{
+    transform: scale(1.05);
+}
+
+/** SEGURIDAD **/
+.seguridad{
+    background-color: var(--primario);
+    padding: 15rem 0;
+    /*lo hacemos referencia de sus hijos colocandole la position relative */
+    position: relative;
+    /* al agrandar el width para cubrir los espacios morados, se crea el scroll horizontal
+    agregamos esta propiedad para que lo oculte*/
+    overflow: hidden;
+    /* ademas deja de tapar la imagen del celular de arriba*/
+}
+.seguridad::before,
+.seguridad::after{
+    background-color: var(--blanco);
+    content: '';
+    height: 20rem;
+    position: absolute;
+    /* pasamos el 100 porque quedaban bordes en morado al rotar el elemento*/
+    width: 120%;
+}
+.seguridad::before{
+    transform: rotate(3deg);
+    top: -10rem;
+    left: 0;
+}
+.seguridad::after{
+    transform: rotate(-3deg);
+    bottom: -10rem;
+    left: 0;
+}
+.seguridad__titulo{
+    color: var(--blanco);
+}
+@media (min-width: 768px) { 
+     .seguridad__grid{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5rem;
+        align-items: center;
+     }
+}
+
+/** COMISIONES **/
+
+@media (min-width: 768px) { 
+     .comisiones__grid{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5rem; 
+        align-items: center;
+     }
+}
+
+.comisiones__encabezado{
+    text-align: center;
+}
+.comisiones__texto{
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+@media (min-width: 768px) { 
+    .comisiones__texto{
+        text-align: left;
+    }
+}
+.informacion__numero{
+    text-align: center;
+    font-weight: 700;
+    font-size: 6rem;
+    color: var(--primario);
+    margin: 0;
+}
+@media (min-width: 768px) { 
+     .informacion__numero{
+        font-size: 4.5rem;
+     }
+}
+@media (min-width: 768px) { 
+    .informacion__texto--2col{
+        display:flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+    }
+}
+.testimonios{
+    background-color: var(--primario);
+    padding: 5rem 0;
+    
+}
+.testimonios__encabezado{
+    text-align: center;
+    color: var(--blanco);
+    margin-bottom: 5rem;
+
+}
+.testimonios__grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+}
+@media (min-width: 768px) { 
+    .testimonios__grid{
+        grid-template-columns: repeat(2,1fr);
+        gap: 2rem;
+    }
+}
+
+.testimonial{
+    background-color: var(--blanco);
+    box-shadow: 0px 0px 15px 3px rgb(255 255 255 / .15);
+    padding: 2rem 3rem;
+    transition: all .3s ease-in-out;
+    /* para poder colocar la comilla de bg img */
+    position: relative;
+}
+.testimonial__texto{
+    padding-left: 4rem;
+}
+.testimonial__texto::before{
+    content: '';
+    background-image: url(../img/comilla.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 3rem;
+    /* hay que ponerle alto y ancho al pseudo elemento before */
+    width: 5rem;
+    height: 5rem;
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 2.5rem;
+}
+.testimonial__autor{
+    font-weight: 700;
+    text-align: right;
+    color: var(--primario);
+}
+.testimonial:hover{
+    transform: scale(1.03);
+}
+
+/** FOOTER **/
+.footer{
+    background-color: #5834a6;
+    padding: 3rem 0 1rem;
+}
+.footer__contenedor{
+    margin-bottom: 0;
+}
+.footer__logo{
+    width: 20rem;
+    margin: 0 auto 4rem;
+}
+@media (min-width: 768px) { 
+    .footer__grid{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .footer__logo{
+        margin: 0;
+    }
+}
+@media (min-width: 768px) { 
+     
+}
+/** modificador ya que en mobil, el texto es morado, no contraste en footer **/
+.navegacion__link--blanco{
+    color: var(--blanco);
+}
+.footer__copyright{
+    text-align: center;
+    color: var(--blanco);
+    font-weight: 700;
+    margin: 4rem 0 0 ;
+}
